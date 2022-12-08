@@ -1,0 +1,94 @@
+- Docker
+
+--> Docker est un outil qui permet d'empaqueter une application et
+	ses dependances dans un containers isole.
+
+--> container: machine virtuelle sans noyau (= OS, iterface graphique, etc...)
+
+--> image: modelisation d'un container qu'on peut stocker localement
+
+--> Docker Hub: App store pour image docker
+
+*/----------------------------------------------------------------------------/*
+
+- Exemple d'image NGINX
+
+FROM		alpine:3.12
+
+RUN			apk update && apk upgrade && apk add	\
+							openssl			\
+							nginx			\
+							curl			\
+							vim				\
+							sudo
+
+RUN			rm -f /etc/nginx/nginx.conf
+
+COPY		./config/nginx.conf /etc/nginx/nginx.conf
+COPY		scripts/setup_nginx.sh /setup_nginx.sh
+
+RUN			chmod -R +x /setup_nginx.sh
+
+EXPOSE		443
+
+ENTRYPOINT	["sh", "setup_nginx.sh"]
+
+*/----------------------------------------------------------------------------/*
+
+- Docker Compose
+
+--> outil pour gerer application multi - conteneur et communiquer entre eux
+
+-->fichier YAML : permet de definir les services, et en une commande de tout
+					lancer ou demonter
+
+*/----------------------------------------------------------------------------/*
+
+- Exemple de fichier .yml :
+
+version: "3"
+
+services:       				# précise les différents services (images) à utiliser 
+
+nginx:
+	build: requirements/website/ 
+	env_file: .env          	# indique le fichier optionnel contenant l'environnement
+	container_name: website		# Le nom du container ( doit porter le meme nom que le service d'apres le sujet )
+	ports:
+	- "80:80"           	  	# le port, détaillé juste en dessous
+	restart: always			  	# Permet de redémarrer automatiquement le container en cas de crash
+
+nginx:
+	build: requirements/intra/
+	env_file: .env
+	container_name: intra
+	ports:
+	- "80:80"
+	restart: always 
+
+mariadb:
+	container_name: badgeuse
+	build: mariadb
+	env_file: .env
+	restart: always
+
+*/----------------------------------------------------------------------------/*
+
+
+Volume contenant base de donnee Wordpress
+Volume contenant fichier Wordpress 
+
+*/Ces volumes doivent être disponibles à partir du dossier /home/<login>/data de la machine hôte utilisant Docker./*
+
+- Qu'est ce qu'un volume??
+
+docker network qui fera le lien des containers
+
+User dans base de donnee WordPress:
+	- admin (ne doit pas s'appeler admin)
+	- standart
+
+Pour des questions de lisibilité, il faudra configurer notre nom de domaine afin qu’il pointe vers notre adresse IP locale. Ce nom de domaine sera <login>.42.fr
+
+
+- Reprendre: comprendre le sujet
