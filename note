@@ -1,3 +1,28 @@
+- Commandes Docker:
+
+start by docker
+
+--> docker build -t <name> <path_repo_img>
+
+--> docker image ls
+
+--> docker ps
+
+--> docker rmi (images)
+
+--> docker rm (containers)
+
+--> docker run <img_name>
+	--> -it : accces au terminal au lancement
+
+
+
+
+
+
+
+*/----------------------------------------------------------------------------/*
+
 - Docker
 
 --> Docker est un outil qui permet d'empaqueter une application et
