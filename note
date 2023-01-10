@@ -1,3 +1,7 @@
+Reprendre a:
+Le fichier de configuration de NGINX:
+
+
 - Commandes Docker:
 
 start by docker
@@ -9,10 +13,11 @@ start by docker
 --> docker ps
 
 --> docker rmi (images)
+	--> -f : force
 
 --> docker rm (containers)
 
---> docker run <img_name>
+--> docker run <img_name> bash
 	--> -it : accces au terminal au lancement
 
 
