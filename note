@@ -1,6 +1,5 @@
 Reprendre a:
-Le fichier de configuration de MariaDB:
-
+Plus qu’à copier le fichier  auto_config.sh  dans votre container et l’exécuter avec le mot clef ENTRYPOINT.
 
 - Commandes Docker:
 
