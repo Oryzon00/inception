@@ -8,10 +8,11 @@ RUN			apt update && apt upgrade -y &&	apt install -y	\
 				mariadb-client
 
 # Install with wget wordpress 6.1.1 into folder /var/www
-RUN 		wget https://fr.wordpress.org/wordpress-6.1.1-fr_FR.tar.gz -P /var/www
+RUN			mkdir -p /var/www/html/
+RUN 		wget https://fr.wordpress.org/wordpress-6.1.1-fr_FR.tar.gz -P /var/www/html
 
 # decompression et clean de wordpress
-RUN 		cd /var/www; \
+RUN 		cd /var/www/html; \
 			tar -xzf wordpress-6.1.1-fr_FR.tar.gz; \ 
 			rm wordpress-6.1.1-fr_FR.tar.gz
 
