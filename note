@@ -1,5 +1,10 @@
-Reprendre a:
-Plus qu’à copier le fichier  auto_config.sh  dans votre container et l’exécuter avec le mot clef ENTRYPOINT.
+- Problemes:
+--> maria db restart en boucle
+--> port 80 open sur nginx
+--> port 80 open sur wordpress
+
+- Commandes Docker compose:
+
 
 - Commandes Docker:
 

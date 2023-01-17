@@ -34,6 +34,8 @@ COPY		/tools/auto_config.sh	/var/wordpress/auto_config.sh
 # dodge error php
 RUN			mkdir -p /run/php
 
+EXPOSE		9000
+
 # CMD: 			args in docker run OVERRIDE CMD
 # ENTRYPOINT:	args in docker run ARE USED as args for ENTRYPOINT
 # cases with CM et ENTRYPOINT en meme temps??

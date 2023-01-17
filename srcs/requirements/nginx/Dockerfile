@@ -19,7 +19,7 @@ COPY		conf/nginx.conf /etc/nginx/conf.d/nginx.conf
 RUN			chmod 755 /var/www/html
 RUN			chown -R www-data:www-data /var/www/html
 
+EXPOSE		443
+
 # Start nginx, no daemon so container does not stop
 CMD 		[ "nginx", "-g", "daemon off;" ]
-
-
