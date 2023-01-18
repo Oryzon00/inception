@@ -2,6 +2,10 @@
 vim /etc/hosts
 
 --> suivre tuto jusqu'a docker version puis apt install docker-compose-plugin
+--> vim
+docker
+ohmyzsh
+
 
 - Commandes Docker compose:
 
