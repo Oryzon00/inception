@@ -60,7 +60,7 @@ volumes:
     driver_opts:
       type: none                                    # no specific type
       o: bind                                       # bind mounts
-      device: ${USER_HOME}/data/mariadb_volume      # where to save repo in local
+      device: ${USER_HOME}/data/mariadb_volume      # where to save volume in local
   
   #------------------------- MARIADB VOLUME -------------------------
   wordpress_volume:
