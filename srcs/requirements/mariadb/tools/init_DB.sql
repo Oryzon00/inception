@@ -9,7 +9,7 @@ CREATE USER IF NOT EXISTS '${SQL_USER}'@'localhost' IDENTIFIED BY '${SQL_PASSWOR
 GRANT ALL PRIVILEGES ON ${SQL_DATABASE}.* TO '${SQL_USER}'@'%'
 	IDENTIFIED BY '${SQL_PASSWORD}';
 
--- # Change les droits root
+-- # Create password root
 ALTER USER 'root'@'localhost' IDENTIFIED BY '${SQL_ROOT_PASSWORD}';
 
 -- # Rafraichit pour etre pris en compte

@@ -5,12 +5,13 @@ DOCKER_COMPOSE	=	sudo docker compose
 all:	build
 		$(DOCKER_COMPOSE) -f srcs/docker-compose.yml up --detach
 
+log:	build
+		$(DOCKER_COMPOSE) -f srcs/docker-compose.yml up
+
 folders:
 		mkdir -p $(HOME)/data/mariadb_volume
 		mkdir -p $(HOME)/data/wordpress_volume
 
-log:	build
-		$(DOCKER_COMPOSE) -f srcs/docker-compose.yml up
 
 build:	folders
 		$(DOCKER_COMPOSE) -f srcs/docker-compose.yml build

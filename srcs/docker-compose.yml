@@ -15,6 +15,8 @@ services:
     volumes:
       - mariadb_volume:/var/lib/mysql
     restart: unless-stopped                 # Restart if not stop lol
+    expose:
+      - "3306"
 
   #------------------------- WORDPRESS -------------------------
   wordpress:
@@ -27,10 +29,13 @@ services:
       dockerfile: Dockerfile
     env_file: .env
     volumes:
-      - wordpress_volume:/var/www/html/wordpress
+      # - wordpress_volume:/var/www/html/wordpress
+      - wordpress_volume:/var/www/wordpress
     restart: on-failure
     depends_on:
       - mariadb
+    expose:
+      - "9000"
 
   #------------------------- NGINX -------------------------
   nginx:
@@ -43,7 +48,8 @@ services:
       dockerfile: Dockerfile
     env_file: .env
     volumes:
-      - wordpress_volume:/var/www/html/wordpress
+      # - wordpress_volume:/var/www/html/wordpress
+      - wordpress_volume:/var/www/wordpress
     restart: on-failure                     # restart in case of crash
     depends_on:                             # wait for wordpress to start nginx
       - wordpress
@@ -76,4 +82,4 @@ networks:
 
   inception:
     driver: bridge
-    name: inception_network                         # allow the 3 containers t communicate in bridge
+    name: inception_network       # allow the 3 containers to communicate in bridge
