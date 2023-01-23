@@ -9,19 +9,16 @@ RUN			apt update && apt upgrade -y &&	apt install -y	\
 
 # Install with wget wordpress 6.1.1 into folder /var/www
 RUN			mkdir -p /var/www/
-#RUN			mkdir -p /var/www/html/
-# RUN 		wget https://fr.wordpress.org/wordpress-6.1.1-fr_FR.tar.gz -P /var/www/html
+
 RUN 		wget https://fr.wordpress.org/wordpress-6.1.1-fr_FR.tar.gz -P /var/www/
 
 
 # decompression et clean de wordpress
-# RUN 		cd /var/www/html; \
 RUN 		cd /var/www/; \
 			tar -xzf wordpress-6.1.1-fr_FR.tar.gz; \ 
 			rm wordpress-6.1.1-fr_FR.tar.gz
 
 # droit root sur dossier wordpress
-# RUN			chown -R root:root /var/www/html/wordpress
 RUN			chown -R root:root /var/www/wordpress
 
 # Fichier config php
@@ -33,14 +30,9 @@ RUN 		chmod +x wp-cli.phar
 RUN 		mv wp-cli.phar /usr/local/bin/wp
 
 # # Copy script to set up wordpress
-# RUN 		mkdir -p /var/wwww/wordpress
-# COPY		/tools/auto_config.sh	/var/wordpress/auto_config.sh
+
 COPY		/tools/auto_config.sh	/var/www/auto_config.sh
 
 EXPOSE		9000
 
-# CMD: 			args in docker run OVERRIDE CMD
-# ENTRYPOINT:	args in docker run ARE USED as args for ENTRYPOINT
-# cases with CM et ENTRYPOINT en meme temps??
-# ENTRYPOINT	["sh", "/var/wordpress/auto_config.sh"] 
 ENTRYPOINT	["sh", "/var/www/auto_config.sh"] 

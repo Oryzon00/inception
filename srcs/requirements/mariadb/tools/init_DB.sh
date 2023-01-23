@@ -7,7 +7,7 @@ if [ ! -f "$PROTECT_FILE" ]; then
 	echo 1
 	mysql < /etc/mysql/init_DB_new.sql 
 	echo 2
-	service mysql stop;#probleme ici
+	service mysql stop; #probleme ici
 	echo 3
 
 

@@ -1,14 +1,9 @@
-# PROTECT_FILE="/var/www/html/wordpress/.wordpress_protect"
 PROTECT_FILE="/var/www/.wordpress_protect"
 
 sleep 10
 
 if [ ! -f "$PROTECT_FILE" ]; then
-		# wp core download --allow-root #Pourquoi??
 		rm -f /var/www/wordpress/wp-config.php
-
-							# --path='/var/www/html/wordpress' \
-							# --path="/var/www/html/wordpress/" \
 
 		wp config create	--allow-root \
 							--dbname=$SQL_DATABASE \
