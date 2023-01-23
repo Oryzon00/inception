@@ -12,7 +12,7 @@ if [ ! -f "$PROTECT_FILE" ]; then
 							--dbhost=mariadb:3306 \
 							--path='/var/www/wordpress' \
 							--skip-check
-		echo check1
+
 		wp core install 	--url="ajung.42.fr" \
 							--title="My website" \
 							--admin_user=$WP_ADMIN_USER \
@@ -21,13 +21,12 @@ if [ ! -f "$PROTECT_FILE" ]; then
 							--skip-email \
 							--path="/var/www/wordpress/" \
 							--allow-root
-		echo check2
+
 		wp user create	$WP_AUTHOR_USER $WP_AUTHOR_EMAIL \
 							--role=author	\
 							--user_pass=$WP_AUTHOR_PASSWORD	\
 							--allow-root	\
 							--path='/var/www/wordpress'
-		echo check3
 
 		touch $PROTECT_FILE
 fi
