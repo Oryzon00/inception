@@ -1,3 +1,5 @@
+
+
 - Problemes:
 vim /etc/hosts
 
@@ -6,7 +8,15 @@ vim /etc/hosts
 docker
 ohmyzsh
 
+- Commandes mysql:
 
+--> mysql -u root -p$SQL_ROOT_PASSWORD
+
+--> use wordpress;
+--> show tables;
+
+-> use mysql;
+-->SELECT user FROM mysql.user;
 - Commandes Docker compose:
 
 

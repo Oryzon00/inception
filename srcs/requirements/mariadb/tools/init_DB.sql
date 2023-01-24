@@ -10,7 +10,7 @@ GRANT ALL PRIVILEGES ON ${SQL_DATABASE}.* TO '${SQL_USER}'@'%'
 	IDENTIFIED BY '${SQL_PASSWORD}';
 
 -- # Create password root
-ALTER USER 'root'@'%' IDENTIFIED BY '${SQL_ROOT_PASSWORD}';
+ALTER USER 'root'@'localhost' IDENTIFIED BY '${SQL_ROOT_PASSWORD}';
 
 -- # Rafraichit pour etre pris en compte
 FLUSH PRIVILEGES;
