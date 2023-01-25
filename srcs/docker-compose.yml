@@ -14,7 +14,7 @@ services:
     env_file: .env
     volumes:
       - mariadb_volume:/var/lib/mysql
-    restart: unless-stopped                 # Restart if not stop lol
+    restart: unless-stopped
     expose:
       - "3306"
 
@@ -80,4 +80,4 @@ networks:
 
   inception:
     driver: bridge
-    name: inception_network       # allow the 3 containers to communicate in bridge
+    name: inception_network       # allow the 3 containers to communicate
